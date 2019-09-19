@@ -1,0 +1,144 @@
+#main_row_1 {
+    position: fixed;
+    margin: auto;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    background: #fff;
+}
+
+#main_row_2 {
+    position: relative;
+    top: 400px;
+}
+
+#resizable {
+    height: 20em;
+}
+
+#flexbox_container {
+    border: 8px solid #ccc;
+    padding: 10px;
+    xheight: 15em;
+    height: 100%;
+    xbox-sizing: content-box;
+    display: flex;
+    box-shadow: 0 4px 5px -2px #999;
+}
+
+#flex_direction_arrow {
+    color: #337ab7;
+}
+
+#cross_axis_arrow {
+    color: #33b77a;
+}
+
+.flex_item {
+    /*	width: 10em;  */
+    background: #eee;
+    margin: 4px;
+    padding: 10px;
+    position: relative;
+    cursor: pointer;
+    transition: all .5s ease;
+}
+
+.flex_item>button {
+    font-size: 2em;
+    position: absolute;
+    z-index: 1;
+    top: -13px;
+    right: -8px;
+    opacity: .8;
+}
+
+.ui-icon-gripsmall-diagonal-se {
+    background-position: -81px -224px;
+}
+
+dt i.fa.fa-plus-circle,
+dt i.fa.fa-minus-circle {
+    color: #337ab7;
+    opacity: .7;
+    padding: 1px;
+    vertical-align: text-top;
+    margin-right: 2px;
+}
+
+#flexbox_container_properties label {
+    cursor: pointer;
+}
+
+#flexbox_container_direction_icon {
+    position: absolute;
+    font-size: 1.3em;
+    top: -16px;
+    left: -16px;
+    background: #fff;
+    color: #888;
+    border-radius: 2em;
+    transition: all .5s ease;
+}
+
+#flexbox_container_cross_direction_icon {
+    position: absolute;
+    top: -11px;
+    right: -11px;
+    background: #fff;
+    color: #bbb;
+    border-radius: 1em;
+    transform: rotate(90deg);
+    transition: all .5s ease;
+    opacity: 0;
+}
+
+#flexbox_container_properties dd,
+#flexbox_item_properties dd {
+    margin-bottom: 6px;
+}
+
+#flexbox_item_properties dt {
+    padding-top: 4px;
+}
+
+#flexbox_item_properties .input-sm {
+    width: 10%;
+    margin-bottom: 4px;
+    height: 28px;
+}
+
+#flex_flow,
+#flex {
+    font-weight: normal;
+}
+
+#add_item_button {
+    margin-right: 4px;
+}
+
+#reset {
+    margin-right: 6px;
+}
+
+.default {
+    color: #337ab7;
+}
+
+.desc {
+    display: none;
+    line-height: 1.6em;
+    padding: 4px 0;
+}
+
+.item_selected {
+    background: lavender;
+}
+
+#flexbox_item_properties .padding_top_zero {
+    padding-top: 0;
+}
+
+.dl-horizontal dd {
+    margin-bottom: 6px;
+}
