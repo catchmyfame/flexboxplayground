@@ -1,0 +1,734 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<title>Flexbox Playground</title>
+<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<!-- jQuery UI -->
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+<style>
+#main_row_1 {
+	position: fixed;
+	margin: auto;
+	right: 0;
+	left: 0;
+	z-index: 1;
+	background: #fff;
+}
+#main_row_2 {
+	position: relative;
+	top: 400px;
+}
+#flexbox_container {
+	border: 8px solid #ccc;
+	padding: 10px;
+	height: 15em;
+	box-sizing: content-box;
+	display: flex;
+	box-shadow: 0 4px 5px -2px #999;
+}
+#flex_direction_arrow {
+	color: #337ab7;
+}
+#cross_axis_arrow {
+	color: #33b77a;
+}
+.flex_item {
+	/*	width: 10em;  */
+	background: #eee;
+	margin: 4px;
+	padding: 10px;
+	position: relative;
+	cursor: pointer;
+	transition: all .5s ease;
+}
+.flex_item > button {
+	font-size: 2em;
+	position: absolute;
+	z-index: 1;
+	top: -13px;
+	right: -8px;
+	opacity: .8;
+}
+.ui-icon-gripsmall-diagonal-se {
+	background-position: -81px -224px;
+}
+dt i.fa.fa-plus-circle, dt i.fa.fa-minus-circle {
+	color: #337ab7;
+	opacity: .7;
+	padding: 1px;
+	vertical-align: text-top;
+	margin-right: 2px;
+}
+#flexbox_container_properties label {
+	cursor: pointer;
+}
+#flexbox_container_direction_icon {
+	position: absolute;
+	font-size: 1.3em;
+	top: -22px;
+	left: -23px;
+	background: #fff;
+	color: #888;
+	border-radius: 2em;
+	transition: all .5s ease;
+}
+#flexbox_container_cross_direction_icon {
+	position: absolute;
+	top: -16px;
+	right: -16px;
+	background: #fff;
+	color: #bbb;
+	border-radius: 1em;
+	transform: rotate(90deg);
+	transition: all .5s ease;
+	opacity: 0;
+}
+#flexbox_container_properties dd, #flexbox_item_properties dd {
+	margin-bottom: 6px;
+}
+#flexbox_item_properties dt {
+	padding-top: 4px;
+}
+#flexbox_item_properties .input-sm {
+	width: 10%;
+	margin-bottom: 4px;
+	height: 28px;
+}
+#flex_flow, #flex {
+	font-weight: normal;
+}
+#add_item_button {
+	margin-right: 4px;
+}
+#reset {
+	margin-right: 6px;
+}
+.default {
+	color: #337ab7;
+}
+.desc {
+	display: none;
+	line-height: 1.6em;
+	padding: 4px 0;
+}
+.item_selected {
+	background: lavender;
+}
+#flexbox_item_properties .padding_top_zero {
+	padding-top: 0;
+}
+.dl-horizontal dd {
+	margin-bottom: 6px;
+}
+</style>
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// --><!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body>
+
+<div id="main_row_1" class="container">
+	<div class="row">
+		<div class="col-md-6">
+			<h1>Flexbox Playground</h1>
+		</div>
+		<div class="col-md-6 text-right" style="padding-top: 25px">
+			<button id="add_item" class="btn btn-primary btn-sm" type="button">
+			<span id="add_item_button" aria-hidden="true" class="glyphicon glyphicon-plus">
+			</span>Add Flex Item</button>
+			<button id="reset" class="btn btn-default btn-sm" type="button">Reset
+			</button><label class="checkbox-inline">
+			<input id="resize_toggle" checked type="checkbox" /> enable resize</label></div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div id="flexbox_container">
+				<span id="flexbox_container_direction_icon" class="fa-stack fa-lg" title="Main axis">
+				<i class="fa fa-circle-thin fa-stack-2x"></i>
+				<i id="flex_direction_arrow" class="fa fa-arrow-right fa-stack-1x">
+				</i></span>
+				<span id="flexbox_container_cross_direction_icon" class="fa-stack" title="Cross axis">
+				<i class="fa fa-circle-thin fa-stack-2x"></i>
+				<i id="cross_axis_arrow" class="fa fa-arrow-right fa-stack-1x">
+				</i></span>
+				<div class="flex_item">
+					<button aria-label="Close" class="close" type="button">
+					<span aria-hidden="true">&times;</span></button>Item</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="main_row_2" class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<h3 id="container_heading">Flex Container Properties <small>Default 
+			values in <span class="default">blue</span></small></h3>
+			<h6>The following properties affect the flexbox container.
+			<a href="#">Click here</a> to toggle all the property descriptions.</h6>
+			<div>
+				<dl id="flexbox_container_properties" class="dl-horizontal">
+					<dt><label><i class="fa fa-plus-circle"></i>display</label>:</dt>
+					<dd><label class="radio-inline">
+					<input checked name="container_display" type="radio" value="flex">flex</label>
+					<label class="radio-inline">
+					<input name="container_display" type="radio" value="inline-flex">inline-flex</label>
+					<div class="desc">
+						<p>To create a flexbox, set the <code>display</code> property 
+						on the parent container element to <code>flex</code> for 
+						a block-level flex container or <code>inline-flex</code> 
+						for an inline-level flex container. Both of these values 
+						define the element as a "flex container" and its children 
+						as "flex items".</p>
+					</div>
+					</dd>
+					<dt><label><i class="fa fa-plus-circle"></i>flex-direction</label>:</dt>
+					<dd><label class="radio-inline default">
+					<input checked name="container_flex_direction" type="radio" value="row"> 
+					row</label> <label class="radio-inline">
+					<input name="container_flex_direction" type="radio" value="row-reverse">row-reverse</label>
+					<label class="radio-inline">
+					<input name="container_flex_direction" type="radio" value="column">column</label>
+					<label class="radio-inline">
+					<input name="container_flex_direction" type="radio" value="column-reverse"> 
+					column-reverse</label>
+					<div class="desc">
+						<p>The <code>flex-direction</code> property specifies how 
+						flex items flow within a flex container by setting the container's 
+						main axis either horizontally (like rows) or vertically 
+						(like columns).</p>
+						<ul>
+							<li>With the <code>flex-direction</code> set to
+							<code>row</code>, flex items are added from left to 
+							right</li>
+							<li>With the <code>flex-direction</code> set to
+							<code>row-reverse</code>, flex items start on the right 
+							and are added on the left. </li>
+							<li>With the <code>flex-direction</code> set to
+							<code>column</code>, flex items are added from top to 
+							bottom</li>
+							<li>With the <code>flex-direction</code> set to
+							<code>column-reverse</code>, flex items start on the 
+							bottom and are added on the top. </li>
+						</ul>
+						<p>This property also defines the cross axis (which is perpendicular 
+						to the main axis) which is implemented when the <code>flex-wrap</code> 
+						property is set to <code>wrap</code> or <code>wrap-reverse</code>. 
+						Note that <code>row</code> and <code>row-reverse</code> 
+						are reversed if the <code>direction</code> property is
+						<code>rtl</code>. </p>
+						<p>In the flex container above, the <code>flex-direction</code> 
+						is indicated by a blue arrow in the upper left corner.</p>
+					</div>
+					</dd>
+					<dt><label><i class="fa fa-plus-circle"></i>flex-wrap</label>:</dt>
+					<dd><label class="radio-inline default">
+					<input checked name="container_flex_wrap" type="radio" value="nowrap">nowrap</label>
+					<label class="radio-inline">
+					<input name="container_flex_wrap" type="radio" value="wrap">wrap</label>
+					<label class="radio-inline">
+					<input name="container_flex_wrap" type="radio" value="wrap-reverse">wrap-reverse</label>
+					<div class="desc">
+						<p>By default, flex items are laid out in a single line 
+						(row or column). Setting the <code>flex-wrap</code> property 
+						allows content to wrap onto multiple lines (rows or columns) 
+						while setting the direction of the cross axis in the process.</p>
+						<p>If the <code>flex-direction</code> is set to <code>row</code> 
+						or <code>row-reverse</code> and <code>flex-wrap</code> is 
+						set to <code>wrap</code>, flex items will wrap from top 
+						to bottom (<code>wrap-reverse</code> would make flex items 
+						wrap from bottom to top).</p>
+						<p>If the <code>flex-direction</code> is set to <code>column</code> 
+						or <code>column-reverse</code> and <code>flex-wrap</code> 
+						is set to <code>wrap</code>, flex items will wrap from left 
+						to right (<code>wrap-reverse</code> would make flex items 
+						wrap from right to left).</p>
+						<p>When the <code>flex-wrap</code> property is set to
+						<code>nowrap</code>, flex items will be added to fit the 
+						flex container and overflow the container if the flex items 
+						can't be shrunk to fit. Note that the wrapping of columns 
+						will be reversed if the direction property is rtl.</p>
+						<p>In the flex container above, the cross axis is indicated 
+						by a green arrow in the upper right corner.</p>
+					</div>
+					</dd>
+					<dt><label><i class="fa fa-plus-circle"></i>flex-flow</label>:
+					</dt>
+					<dd><span id="flex_flow">row nowrap</span>
+					<div class="desc">
+						<p>A shorthand property for the <code>flex-direction</code> 
+						and <code>flex-wrap</code> properties.</p>
+					</div>
+					</dd>
+					<dt><label><i class="fa fa-plus-circle"></i>justify-content</label>:</dt>
+					<dd><label class="radio-inline default">
+					<input checked name="container_justify_content" type="radio" value="flex-start">flex-start</label><label class="radio-inline"><input name="container_justify_content" type="radio" value="flex-end">flex-end</label>
+					<label class="radio-inline">
+					<input name="container_justify_content" type="radio" value="center">center</label>
+					<label class="radio-inline">
+					<input name="container_justify_content" type="radio" value="space-between">space-between</label>
+					<label class="radio-inline">
+					<input name="container_justify_content" type="radio" value="space-around">space-around</label>
+					<div class="desc">
+						<p>The <code>justify-content</code> property specifies how 
+						the browser distributes space between and around flex items 
+						along the main axis of their container.</p>
+						<ul>
+							<li><code>flex-start</code>: Pack flex items at the 
+							start of the main axis (akin to left justified if the 
+							flex-direction was row)</li>
+							<li><code>flex-end</code>: Pack items at the end of 
+							the main axis (akin to right justified if the flex-direction 
+							was row)</li>
+							<li><code>center</code>: Pack items around the center 
+							(akin to centered)</li>
+							<li><code>space-between</code>: Distribute items evenly 
+							with the first item at the start and the last at the 
+							end</li>
+							<li><code>space-around</code>: Distribute items evenly 
+							with equal space around each item</li>
+						</ul>
+						<img alt="" src="http://www.w3.org/TR/css3-flexbox/images/flex-pack.svg" />
+					</div>
+					</dd>
+					<dt><label><i class="fa fa-plus-circle"></i>align-items</label>:</dt>
+					<dd><label class="radio-inline default">
+					<input checked name="container_align_items" type="radio" value="stretch">stretch</label><label class="radio-inline">
+					<input name="container_align_items" type="radio" value="flex-start">flex-start</label><label class="radio-inline"><input name="container_align_items" type="radio" value="flex-end">flex-end</label><label class="radio-inline"><input name="container_align_items" type="radio" value="center">center</label><label class="radio-inline">
+					<input name="container_align_items" type="radio" value="baseline">baseline</label>
+					<div class="desc">
+						<p>Similar to <code>justify-content</code> but for the perpendicular 
+						cross axis direction.</p>
+						<ul>
+							<li><code>flex-start</code>: Align to cross axis start</li>
+							<li><code>flex-end</code>: Align to cross axis end</li>
+							<li><code>center</code>: Center flex items along the 
+							cross axis</li>
+							<li><code>baseline</code>: Align the flex items’ baselines</li>
+							<li><code>stretch</code>: Stretch flex items to fit 
+							their container along the cross axis</li>
+						</ul>
+						<img alt="" src="http://www.w3.org/TR/css3-flexbox/images/flex-align.svg" />
+					</div>
+					</dd>
+					<dt><label><i class="fa fa-plus-circle"></i>align-content</label>:</dt>
+					<dd><label class="radio-inline default">
+					<input checked name="container_align_content" type="radio" value="stretch">stretch</label><label class="radio-inline">
+					<input name="container_align_content" type="radio" value="flex-start">flex-start</label><label class="radio-inline">
+					<input name="container_align_content" type="radio" value="flex-end">flex-end</label><label class="radio-inline">
+					<input name="container_align_content" type="radio" value="center">center</label><label class="radio-inline">
+					<input name="container_align_content" type="radio" value="space-between">space-between</label><label class="radio-inline">
+					<input name="container_align_content" type="radio" value="space-around">space-around</label>
+					<div class="desc">
+						<p>The <code>align-content</code> property aligns a flex 
+						container's lines along the cross axis when there is extra 
+						space, similar to how <code>justify-content</code> aligns 
+						individual items within the main axis. <strong>This property 
+						has no effect on single line flexible boxes</strong>.</p>
+						<ul>
+							<li><code>flex-start</code>: Pack lines from the cross-axis 
+							start</li>
+							<li><code>flex-end</code>: Pack lines from the cross-axis 
+							end</li>
+							<li><code>center</code>: Pack lines around the cross-axis 
+							center</li>
+							<li><code>space-between</code>: Distribute lines along 
+							the cross-axis, start to end</li>
+							<li><code>space-around</code>: Distribute lines along 
+							the cross-axis, equally spaced</li>
+							<li><code>stretch</code>: Stretch lines to occupy the 
+							whole cross-axis</li>
+						</ul>
+						<img alt="" src="http://www.w3.org/TR/css3-flexbox/images/align-content-example.svg" />
+					</div>
+					</dd>
+				</dl>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<h3>Flex Item Properties <small>Click an item in the flex container 
+			to modify it</small></h3>
+			<h6>The following properties affect flexbox items. <a href="#">Click 
+			here</a> to toggle all the property descriptions.</h6>
+			<div>
+				<dl id="flexbox_item_properties" class="dl-horizontal">
+					<dt><label><i class="fa fa-plus-circle"></i>flex-grow</label>:</dt>
+					<dd>
+					<input class="form-control input-sm" min="0" name="flex_grow" type="number" />
+					<div class="desc">
+						<p>The <code>flex-grow</code> property specifies the "flex 
+						grow factor" of a flex item which determines how much the 
+						flex item will grow relative to the rest of the flex items 
+						in the flex container when positive free space is distributed 
+						(negative numbers are invalid). The initial value is
+						<code>0</code>.</p>
+					</div>
+					</dd>
+					<dt><label><i class="fa fa-plus-circle"></i>flex-shrink</label>:</dt>
+					<dd>
+					<input class="form-control input-sm" min="0" name="flex_shrink" type="number" />
+					<div class="desc">
+						<p>The <code>flex-shrink</code> property specifies the "flex 
+						shrink factor" of a flex item which determines how much 
+						the flex item will shrink relative to the rest of the flex 
+						items in the flex container when negative free space is 
+						distributed (negative numbers are invalid). Note: The flex 
+						shrink factor is multiplied by the flex base size when distributing 
+						negative space. This distributes negative space in proportion 
+						to how much the item is able to shrink, so that e.g. a small 
+						item won't shrink to zero before a larger item has been 
+						noticeably reduced. The initial value is <code>1</code></p>
+					</div>
+					</dd>
+					<dt><label><i class="fa fa-plus-circle"></i>flex-basis</label>:</dt>
+					<dd>
+					<input class="form-control input-sm" name="flex_basis" type="text" />
+					<div class="desc">
+						<p>The <code>flex-basis</code> property specifies the initial 
+						main size of a flex item. Defined as a number followed by 
+						a absolute unit such as <code>px</code>, <code>mm</code> 
+						or <code>pt</code>, or a percentage of the parent flex container 
+						main size property. Negative values are invalid. It takes 
+						the same values as the width property. The initial value 
+						is <code>auto</code></p>
+					</div>
+					</dd>
+					<dt class="padding_top_zero"><label>
+					<i class="fa fa-plus-circle"></i>flex</label>:</dt>
+					<dd><span id="flex">Shorthand for the above three properties</span><div class="desc">
+						<p>A shorthand property for the <code>flex-grow</code>,
+						<code>flex-shrink</code> and <code>flex-basis</code> properties. 
+						It's recommended to use the shorthand over the individual 
+						properties as the shorthand correctly resets any unspecified 
+						components to accommodate common uses. The initial value 
+						is <code>0 1 auto</code></p>
+					</div>
+					</dd>
+					<dt class="padding_top_zero"><label>
+					<i class="fa fa-plus-circle"></i>align-self</label>:</dt>
+					<dd><label class="radio-inline default">
+					<input checked name="align_self" type="radio" value="auto">auto</label>
+					<label class="radio-inline">
+					<input name="align_self" type="radio" value="flex-start">flex-start</label>
+					<label class="radio-inline">
+					<input name="align_self" type="radio" value="flex-end">flex-end</label>
+					<label class="radio-inline">
+					<input name="align_self" type="radio" value="center">center</label>
+					<label class="radio-inline">
+					<input name="align_self" type="radio" value="baseline">baseline</label>
+					<label class="radio-inline">
+					<input name="align_self" type="radio" value="stretch">stretch</label>
+					<div class="desc">
+						<p>Aligns flex items of the current flex line overriding 
+						the flex container's <code>align-items</code> value. The 
+						initial value is auto.</p>
+						<ul>
+							<li><code>auto</code>: Computes to parent's align-items 
+							value or stretch if the element has no parent.</li>
+							<li><code>flex-start</code>: The cross-start margin 
+							edge of the flex item is flushed with the cross-start 
+							edge of the line.</li>
+							<li><code>flex-end</code>: The cross-end margin edge 
+							of the flex item is flushed with the cross-end edge 
+							of the line.</li>
+							<li><code>center</code>: The flex item's margin box 
+							is centered within the line on the cross-axis. If the 
+							cross-size of the item is larger than the flex container, 
+							it will overflow equally in both directions.</li>
+							<li><code>baseline</code>:All flex items are aligned 
+							such that their baselines align. The item with the largest 
+							distance between its cross-start margin edge and its 
+							baseline is flushed with the cross-start edge of the 
+							line.</li>
+							<li><code>stretch</code>: Flex items are stretched such 
+							as the cross-size of the item's margin box is the same 
+							as the line while respecting width and height constraints.</li>
+						</ul>
+					</div>
+					</dd>
+					<dt><label><i class="fa fa-plus-circle"></i>order</label>:</dt>
+					<dd>
+					<input class="form-control input-sm" name="order" type="number" />
+					<div class="desc">
+						<p>Controls the order in which children of a flex container 
+						appear inside the flex container. Flex items are, by default, 
+						displayed and laid out in the same order as they appear 
+						in the source document. A flex container lays out its content 
+						in order-modified document order, starting from the lowest 
+						numbered ordinal group and going up. Items with the same 
+						ordinal group are laid out in the order they appear in the 
+						source document. The inital value is <code>0</code> and 
+						negative values are permitted.</p>
+					</div>
+					</dd>
+					<dt><label>width</label>:</dt>
+					<dd>
+					<input class="form-control input-sm" name="flex_item_width" type="text" /></dd>
+					<dt><label>height</label>:</dt>
+					<dd>
+					<input class="form-control input-sm" name="flex_item_height" type="text" /></dd>
+				</dl>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<h2>What is Flexbox?</h2>
+			<p>Flexbox is a way to layout elements to accommodate different screen 
+			sizes. Flexbox does not rely on floats and margins, and the flex container's 
+			margins don't collapse with the margins of its contents. Note that some 
+			browsers need prefixes to use these features.</p>
+			<p>The "flex" in flexbox comes from its ability to alter its items' 
+			width, height, and order to best fill the available space. Flexible 
+			items expand and shrink to fill the available space.</p>
+			<p>Flexbox content begins with a container whose display property is 
+			set to flex or inline-flex. Any elements within that container are now 
+			automatically flex-items. Every flexible box layout follows two axes. 
+			The main axis is the axis along which the flex items follow each other. 
+			The cross axis is the axis perpendicular to the main axis. For example, 
+			if we have the flex-direction set to row, the main axis is horizontal 
+			(left to right unless the direction is set rtl) and the cross direction 
+			is vertical (top to bottom)</p>
+			<h2>What isn't Flexbox?</h2>
+			<p>The answer to every layout problem. Like any tool, flexbox has its place in your toolbox, but it's not meant to be a cure-all for every layout issue.</p>
+			<h2>What is this site?</h2>
+			<p>This site is a resource where you can learn about flexbox and test 
+			out various basic flexbox layouts. The playground area allows you to 
+			manipulate the flex container and flex items quickly and easily without 
+			having to write any code. It's a work-in-progess that will be updated with examples, frequently asked questions, and new information as standards evolve.</p>
+			<h2>Glossary <small>Frequently used flexbox-related terminology</small></h2>
+			<img alt="flex box terminology example" class="img-responsive center-block" src="http://www.w3.org/TR/css3-flexbox/images/flex-direction-terms.svg" />
+			<dl class="dl-horizontal">
+				<dt>Axes</dt>
+				<dd>
+				<p>Every flexible box layout follows two axes. The <strong>main 
+				axis</strong> is the axis along which the flex items follow each 
+				other. The <strong>cross axis</strong> is the axis perpendicular 
+				to the <strong>main axis</strong>.</p>
+				<ul>
+					<li>The
+					<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction">
+					<code>flex-direction</code></a> property establishes the main axis.</li>
+					<li>The
+					<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content">
+					<code>justify-content</code></a> property defines how flex items are laid 
+					out along the main axis on the current line.</li>
+					<li>The
+					<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/align-items">
+					<code>align-items</code></a> property defines the default for how flex items 
+					are laid out along the cross axis on the current line.</li>
+					<li>The
+					<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/align-self">
+					<code>align-self</code></a> property defines how a single flex item is aligned 
+					on the cross axis, and overrides the default established by 
+					<code>align-items</code>.</li>
+				</ul>
+				</dd>
+				<dt>Cross axis</dt>
+				<dd>The axis perpendicular to the main axis.</dd>
+				<dt>Cross-start/cross-end</dt>
+				<dd>Flex lines are filled with items and placed into the container 
+				starting on the cross-start side of the flex container and going 
+				toward the cross-end side.</dd>
+				<dt>Dimensions</dt>
+				<dd>
+				<p>The flex items' 	agnostic equivalents of height and width are
+				main size and cross size, which 
+				respectively follow the main axis and cross axis of the flex container.</p>
+				</dd>
+				<dt>Directions</dt>
+				<dd>
+				<p>The main start/main end and
+				cross start/cross end sides of 
+				the flex container describe the origin and terminus of the flow 
+				of flex items. They follow the main axis and cross axis of the flex 
+				container in the vector established by the writing-mode (left-to-right, 
+				right-to-left, etc.).</p>
+				</dd>
+				<dt>Flex container</dt>
+				<dd>The parent element in which flex items are contained. A flex 
+				container is defined using the <code>flex</code> or <code>inline-flex</code> values of the
+				<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/display">
+				display</a> property.</dd>
+				<dt>Flex item</dt>
+				<dd>
+				<p>Each child of a flex container becomes a flex item. Text directly 
+				contained in a flex container is wrapped in an anonymous flex item.</p>
+				</dd>
+				<dt>Lines</dt>
+				<dd>
+				<p>Flex items can be laid out on either a single line or on several 
+				lines according to the
+				<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-wrap">
+				flex-wrap</a> property, which controls the direction of the cross 
+				axis and the direction in which new lines are stacked.</p>
+				</dd>
+				<dt>Main axis</dt>
+				<dd>The primary axis along which flex items are laid out.</dd>
+				<dt>Main-start/main-end</dt>
+				<dd>The flex items are placed within the container starting on the 
+				main-start side and going toward the main-end side</dd>
+			</dl>
+			<h2>FAQ</h2>
+			<h2>Known issues</h2>
+			<ul>
+				<li>When adding flexbox items, Chrome (v46) does not show the proper 
+				results when the flex direction is set to column or column-row and 
+				wrapping is on. A simple workaround in the playground above is to resize the width of the 
+				container.</li>
+			</ul>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<h2>Examples</h2>
+			<p>grids, holy grail, vertical centering</p>
+		</div>
+	</div>
+</div>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+<script>
+$(function() {
+	var maxContainerWidth, selectedItem;
+	$( "#flexbox_container" ).resizable({
+		minHeight: 50,
+		create: function(){
+			maxContainerWidth = $(this).width();
+		},
+		start: function(){
+			$( "#flexbox_container" ).resizable('option', 'maxWidth', maxContainerWidth );
+		},
+		resize: function(){
+			$('#main_row_2').css('top',$('#main_row_1').height());
+		}
+	});
+	$('#resize_toggle').change(function(){
+		if($(this).is(':checked')){
+			$( "#flexbox_container" ).resizable( "enable" );
+		}else{
+			$( "#flexbox_container" ).resizable( "disable" );
+		}
+	})
+	$('#add_item').click(function(){
+		var content = '<div class="flex_item"><button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>Item</div>';
+		$(content).hide().appendTo('#flexbox_container').fadeIn('fast');
+	})
+	$('#reset').click(function(){ location.reload(); });
+	$('#flexbox_container').on('click', '.flex_item > button', function(e){
+		e.stopPropagation();
+		$(this).parent('.flex_item').remove();
+	})	
+	$('input[name="container_display"]').change(function(){
+		$( "#flexbox_container" ).css('display', $(this).val() );
+	})
+	$('input[name="container_flex_direction"]').change(function(){
+		$( "#flexbox_container" ).css('flex-direction', $(this).val() );
+		if($(this).val() === 'row') $('#flexbox_container_direction_icon').css('transform','rotate(0deg)');
+		if($(this).val() === 'row-reverse') $('#flexbox_container_direction_icon').css('transform','rotate(-180deg)');
+		if($(this).val() === 'column') $('#flexbox_container_direction_icon').css('transform','rotate(90deg)');
+		if($(this).val() === 'column-reverse') $('#flexbox_container_direction_icon').css('transform','rotate(-90deg)');
+		$('#flex_flow').text($(this).val() + ' ' + $('input[name="container_flex_wrap"]:checked').val() );
+		var flex_wrap = $('input[name="container_flex_wrap"]:checked').val(); 	
+		if(flex_wrap == 'wrap'){
+			if( $(this).val() == 'row' || $(this).val() == 'row-reverse' ) $('#flexbox_container_cross_direction_icon').css('transform','rotate(90deg)');
+			if( $(this).val() == 'column' || $(this).val() == 'column-reverse' ) $('#flexbox_container_cross_direction_icon').css('transform','rotate(0deg)');			
+		} else { // wrap-reverse
+			if( $(this).val() == 'row' || $(this).val() == 'row-reverse' ) $('#flexbox_container_cross_direction_icon').css('transform','rotate(-90deg)');
+			if( $(this).val() == 'column' || $(this).val()== 'column-reverse' ) $('#flexbox_container_cross_direction_icon').css('transform','rotate(180deg)');			
+		}
+	})
+	$('input[name="container_flex_wrap"]').change(function(){
+		$('#flexbox_container').css('flex-wrap', $(this).val() );
+		$('#flex_flow').text($('input[name="container_flex_direction"]:checked').val() + ' ' + $(this).val() );
+		
+		if($(this).val()=='nowrap'){
+			$('#flexbox_container_cross_direction_icon').animate({ opacity: 0 }, 100)
+		} else {
+			var flex_dir = $('input[name="container_flex_direction"]:checked').val(); 
+			if($(this).val()=='wrap'){
+				if( flex_dir == 'row' || flex_dir == 'row-reverse' ) $('#flexbox_container_cross_direction_icon').css('transform','rotate(90deg)');
+				if( flex_dir == 'column' || flex_dir == 'column-reverse' ) $('#flexbox_container_cross_direction_icon').css('transform','rotate(0deg)');			
+			} else { // wrap-reverse
+				if( flex_dir == 'row' || flex_dir == 'row-reverse' ) $('#flexbox_container_cross_direction_icon').css('transform','rotate(-90deg)');
+				if( flex_dir == 'column' || flex_dir == 'column-reverse' ) $('#flexbox_container_cross_direction_icon').css('transform','rotate(180deg)');			
+			}
+			$('#flexbox_container_cross_direction_icon').animate({ opacity: 1 }, 100)
+		}
+	})
+	$('input[name="container_justify_content"]').change(function(){
+		$( "#flexbox_container" ).css( 'justify-content', $(this).val() );
+	})
+	$('input[name="container_align_items"]').change(function(){
+		$( "#flexbox_container" ).css( 'align-items', $(this).val() );
+	})
+	$('input[name="container_align_content"]').change(function(){
+		$( "#flexbox_container" ).css( 'align-content', $(this).val() );
+	})
+	$( "#flexbox_container" ).on('click', '.flex_item', function(){
+		selectedItem = $(this);
+		$('input[name="flex_grow"]').val($(this).css('flex-grow'));
+		$('input[name="flex_shrink"]').val($(this).css('flex-shrink'));
+		$('input[name="flex_basis"]').val($(this).css('flex-basis'));
+		$('input[name="align_self"][value="'+$(this).css('align-self')+'"]').prop( "checked", true )
+		$('input[name="order"]').val($(this).css('order'));
+		$('#flex').text( $(this).css('flex-grow') + ' ' + $(this).css('flex-shrink') + ' ' + $(this).css('flex-basis') ); 
+		$('input[name="flex_item_width"]').val($(this).css('width'));
+		$('input[name="flex_item_height"]').val($(this).css('height'));	
+		$('.flex_item').not(this).removeClass('item_selected');
+		selectedItem.toggleClass('item_selected');
+	})
+	$('input[name="flex_grow"]').change(function(){
+	console.log(typeof $(this).val())
+		selectedItem.css('flex-grow', $(this).val());
+	})
+	$('input[name="flex_shrink"]').change(function(){
+		selectedItem.css('flex-shrink', $(this).val());
+	})
+	$('input[name="flex_basis"]').change(function(){
+		selectedItem.css('flex-basis', $(this).val());
+	})
+	$('input[name="align_self"]').change(function(){
+		selectedItem.css('align-self', $(this).val());
+	})
+	$('input[name="order"]').change(function(){
+		selectedItem.css('order', $(this).val());
+	})
+	$('input[name="flex_item_width"]').change(function(){
+		selectedItem.css('width', $(this).val());
+	})
+	$('input[name="flex_item_height"]').change(function(){
+		selectedItem.css('height', $(this).val());
+	})
+	$('#flexbox_container_properties, #flexbox_item_properties').on('click', 'dt label', function(){
+		$(this).find('i').toggleClass('fa-plus-circle fa-minus-circle').closest('dt').next().find('.desc').slideToggle();
+	})
+	$('#main_row_2').css('top',$('#main_row_1').height());
+	$('h6 a').click(function(e){
+		e.preventDefault();
+		if($(this).parent().next().find('.desc:visible').length == $(this).parent().next().find('.desc').length){
+			$(this).parent().next().find('.desc').slideUp();
+		} else {
+			$(this).parent().next().find('.desc').slideDown();
+		}
+		
+	})
+});
+</script>
+
+</body>
+
+</html>
