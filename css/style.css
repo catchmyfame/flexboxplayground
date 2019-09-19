@@ -1,0 +1,149 @@
+#main_row_1 {
+    position: fixed;
+    margin: auto;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    background: #fff;
+}
+
+#main_row_2 {
+    position: relative;
+    top: 400px;
+}
+
+#code {
+    display: none;
+    background: #f3f3f3;
+    padding: 1em;
+}
+
+#flexbox_container {
+    border: 8px solid #ccc;
+    padding: 10px;
+    height: 100%;
+    display: flex;
+    resize: both;
+    overflow: auto;
+    height: 20em;
+    min-width: 6em;
+    max-width: 100%;
+    min-height: 6em;
+    box-shadow: 0 4px 5px -2px #999;
+}
+
+#flex_direction_arrow {
+    color: #337ab7;
+}
+
+#cross_axis_arrow {
+    color: #33b77a;
+}
+
+.flex_item {
+    /*	width: 10em;  */
+    background: #eee;
+    margin: 4px;
+    padding: 10px;
+    position: relative;
+    cursor: pointer;
+    transition: all .5s ease;
+}
+
+.flex_item>button {
+    font-size: 2em;
+    position: absolute;
+    z-index: 1;
+    top: -18px;
+    right: -11px;
+    opacity: .8;
+}
+
+.ui-icon-gripsmall-diagonal-se {
+    background-position: -81px -224px;
+}
+
+dt .fa-plus-circle,
+dt .fa-minus-circle {
+    color: #337ab7;
+    opacity: .7;
+    padding: 1px;
+    margin-right: 2px;
+}
+
+#flexbox_container_properties label {
+    cursor: pointer;
+}
+
+#flexbox_container_direction_icon {
+    position: absolute;
+    top: -12px;
+    left: -1px;
+    color: #888;
+    transition: all .5s ease;
+}
+
+#flexbox_container_cross_direction_icon {
+    position: absolute;
+    top: -11px;
+    right: -1px;
+    color: #bbb;
+    transform: rotate(90deg);
+    transition: all .5s ease;
+    opacity: 0;
+}
+
+.fa-circle {
+    color: white;
+}
+
+.fa-arrow-right {
+    color: black;
+}
+
+span .fa-circle path {
+    stroke: #888;
+    stroke-width: 50;
+}
+
+#flexbox_container_properties dd,
+#flexbox_item_properties dd {
+    margin-bottom: 6px;
+}
+
+#flexbox_item_properties dt {
+    padding-top: 4px;
+}
+
+#flexbox_item_properties .input-sm {
+    width: 10%;
+    margin-bottom: 4px;
+    height: 28px;
+}
+
+#flex_flow,
+#flex {
+    font-weight: normal;
+}
+
+#reset {
+    margin-right: 6px;
+}
+
+.default {
+    color: #337ab7;
+}
+
+.desc {
+    display: none;
+    line-height: 1.6em;
+    padding: 4px 0;
+}
+
+.item_selected {
+    background: lavender;
+}
+
+.dl-horizontal dd {
+    margin-bottom: 6px;
+}
