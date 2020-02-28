@@ -14,9 +14,9 @@ $(function () {
     // });
     $('#resize_toggle').change(function () {
         if ($(this).is(':checked')) {
-            $("#resizable").resizable("enable");
+            $("#resizable").css("resize", "both");
         } else {
-            $("#resizable").resizable("disable");
+            $("#resizable").css("resize", "none");
         }
     })
     $('#add_item').click(function () {
@@ -24,6 +24,14 @@ $(function () {
         $(content).hide().appendTo('#flexbox_container').fadeIn('fast');
     })
     $('#reset').click(function () { if (confirm("Are you sure you want to reset the playground?")) location.reload(); });
+    $('#view').click(function(){
+        // slidetoggle a div from the top with code
+        console.log($('#flexbox_container')[0].outerHTML);
+        var code = $('#flexbox_container')[0].outerHTML;
+
+        code = code.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+        $('#code').html('<pre><code>'+code+'</code></pre>').slideToggle('fast');
+    })
     $('#flexbox_container').on('click', '.flex_item > button', function (e) {
         e.stopPropagation();
         $(this).parent('.flex_item').remove();
@@ -88,7 +96,6 @@ $(function () {
         selectedItem.toggleClass('item_selected');
     })
     $('input[name="flex_grow"]').change(function () {
-        console.log(typeof $(this).val())
         selectedItem.css('flex-grow', $(this).val());
     })
     $('input[name="flex_shrink"]').change(function () {
