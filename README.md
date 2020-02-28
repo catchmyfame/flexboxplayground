@@ -7,3 +7,4 @@ https://catchmyfame.github.io/flexboxplayground/
 * Remove jQueryUI
 * Create view HTML/CSS option
 * Add `place-content`, `place-items`, and `place-self` properties
+* Update Bootstrap
