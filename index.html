@@ -7,7 +7,8 @@
 	<meta content="width=device-width, initial-scale=1" name="viewport">
 	<title>Flexbox Playground</title>
 	<!-- Bootstrap -->
-	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	<!-- jQuery UI -->
 	<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet">
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -28,7 +29,7 @@
 			<div class="col-md-6">
 				<h1>Flexbox Playground</h1>
 			</div>
-			<div class="col-md-6 text-right" style="padding-top: 25px">
+			<div class="col-md-6 text-right pt-3">
 				<button id="add_item" class="btn btn-primary btn-sm" type="button">
 					<span id="add_item_button" aria-hidden="true" class="glyphicon glyphicon-plus">
 					</span>Add Flex Item</button>
@@ -59,17 +60,17 @@
 	<div id="main_row_2" class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<h3 id="container_heading">Flex Container Properties <small>Default
+				<h3 id="container_heading" class="my-3">Flex Container Properties <small>Default
 						values in <span class="default">blue</span></small></h3>
 				<h6>The following properties affect the flexbox container.
 					<a href="#"><strong>Click here</strong></a> to toggle all the property descriptions.</h6>
 				<div>
-					<dl id="flexbox_container_properties" class="dl-horizontal">
-						<dt><label><i class="fa fa-plus-circle"></i>display</label>:</dt>
-						<dd><label class="radio-inline">
-								<input checked name="container_display" type="radio" value="flex">flex</label>
+					<dl id="flexbox_container_properties" class="row">
+						<dt class="col-sm-2"><label><i class="fa fa-plus-circle"></i>display</label>:</dt>
+						<dd class="col-sm-10"><label class="radio-inline">
+								<input checked name="container_display" type="radio" value="flex"> flex</label>
 							<label class="radio-inline">
-								<input name="container_display" type="radio" value="inline-flex">inline-flex</label>
+								<input name="container_display" type="radio" value="inline-flex"> inline-flex</label>
 							<div class="desc">
 								<p>To create a flexbox, set the <code>display</code> property
 									on the parent container element to <code>flex</code> for
@@ -79,14 +80,14 @@
 									as "flex items".</p>
 							</div>
 						</dd>
-						<dt><label><i class="fa fa-plus-circle"></i>flex-direction</label>:</dt>
-						<dd><label class="radio-inline default">
+						<dt class="col-sm-2"><label><i class="fa fa-plus-circle"></i>flex-direction</label>:</dt>
+						<dd class="col-sm-10"><label class="radio-inline default">
 								<input checked name="container_flex_direction" type="radio" value="row">
 								row</label> <label class="radio-inline">
-								<input name="container_flex_direction" type="radio"
-									value="row-reverse">row-reverse</label>
+								<input name="container_flex_direction" type="radio" value="row-reverse">
+								row-reverse</label>
 							<label class="radio-inline">
-								<input name="container_flex_direction" type="radio" value="column">column</label>
+								<input name="container_flex_direction" type="radio" value="column"> column</label>
 							<label class="radio-inline">
 								<input name="container_flex_direction" type="radio" value="column-reverse">
 								column-reverse</label>
@@ -119,13 +120,14 @@
 									is indicated by a blue arrow in the upper left corner.</p>
 							</div>
 						</dd>
-						<dt><label><i class="fa fa-plus-circle"></i>flex-wrap</label>:</dt>
-						<dd><label class="radio-inline default">
-								<input checked name="container_flex_wrap" type="radio" value="nowrap">nowrap</label>
+						<dt class="col-sm-2"><label><i class="fa fa-plus-circle"></i>flex-wrap</label>:</dt>
+						<dd class="col-sm-10"><label class="radio-inline default">
+								<input checked name="container_flex_wrap" type="radio" value="nowrap"> nowrap</label>
 							<label class="radio-inline">
-								<input name="container_flex_wrap" type="radio" value="wrap">wrap</label>
+								<input name="container_flex_wrap" type="radio" value="wrap"> wrap</label>
 							<label class="radio-inline">
-								<input name="container_flex_wrap" type="radio" value="wrap-reverse">wrap-reverse</label>
+								<input name="container_flex_wrap" type="radio" value="wrap-reverse">
+								wrap-reverse</label>
 							<div class="desc">
 								<p>By default, flex items are laid out in a single line
 									(row or column). Setting the <code>flex-wrap</code> property
@@ -150,27 +152,28 @@
 									by a green arrow in the upper right corner.</p>
 							</div>
 						</dd>
-						<dt><label><i class="fa fa-plus-circle"></i>flex-flow</label>:
-						</dt>
-						<dd><span id="flex_flow">row nowrap</span>
+						<dt class="col-sm-2"><label><i class="fa fa-plus-circle"></i>flex-flow</label>:</dt>
+						<dd class="col-sm-10"><span id="flex_flow">row nowrap</span>
 							<div class="desc">
 								<p>A shorthand property for the <code>flex-direction</code>
 									and <code>flex-wrap</code> properties.</p>
 							</div>
 						</dd>
-						<dt><label><i class="fa fa-plus-circle"></i>justify-content</label>:</dt>
-						<dd><label class="radio-inline default">
-								<input checked name="container_justify_content" type="radio"
-									value="flex-start">flex-start</label><label class="radio-inline"><input
-									name="container_justify_content" type="radio" value="flex-end">flex-end</label>
+						<dt class="col-sm-2"><label><i class="fa fa-plus-circle"></i>justify-content</label>:</dt>
+						<dd class="col-sm-10">
+							<label class="radio-inline default">
+								<input checked name="container_justify_content" type="radio" value="flex-start">
+								flex-start</label>
+							<label class="radio-inline"><input name="container_justify_content" type="radio"
+									value="flex-end"> flex-end</label>
 							<label class="radio-inline">
-								<input name="container_justify_content" type="radio" value="center">center</label>
+								<input name="container_justify_content" type="radio" value="center"> center</label>
 							<label class="radio-inline">
-								<input name="container_justify_content" type="radio"
-									value="space-between">space-between</label>
+								<input name="container_justify_content" type="radio" value="space-between">
+								space-between</label>
 							<label class="radio-inline">
-								<input name="container_justify_content" type="radio"
-									value="space-around">space-around</label>
+								<input name="container_justify_content" type="radio" value="space-around">
+								space-around</label>
 							<div class="desc">
 								<p>The <code>justify-content</code> property specifies how
 									the browser distributes space between and around flex items
@@ -193,16 +196,18 @@
 								<img alt="" src="images/justify-content.png" />
 							</div>
 						</dd>
-						<dt><label><i class="fa fa-plus-circle"></i>align-items</label>:</dt>
-						<dd><label class="radio-inline default">
-								<input checked name="container_align_items" type="radio"
-									value="stretch">stretch</label><label class="radio-inline">
-								<input name="container_align_items" type="radio"
-									value="flex-start">flex-start</label><label class="radio-inline"><input
-									name="container_align_items" type="radio" value="flex-end">flex-end</label><label
-								class="radio-inline"><input name="container_align_items" type="radio"
-									value="center">center</label><label class="radio-inline">
-								<input name="container_align_items" type="radio" value="baseline">baseline</label>
+						<dt class="col-sm-2"><label><i class="fa fa-plus-circle"></i>align-items</label>:</dt>
+						<dd class="col-sm-10"><label class="radio-inline default">
+								<input checked name="container_align_items" type="radio" value="stretch">
+								stretch</label>
+							<label class="radio-inline">
+								<input name="container_align_items" type="radio" value="flex-start"> flex-start</label>
+							<label class="radio-inline"><input name="container_align_items" type="radio"
+									value="flex-end"> flex-end</label>
+							<label class="radio-inline"><input name="container_align_items" type="radio" value="center">
+								center</label>
+							<label class="radio-inline">
+								<input name="container_align_items" type="radio" value="baseline"> baseline</label>
 							<div class="desc">
 								<p>Similar to <code>justify-content</code> but for the perpendicular
 									cross axis direction.</p>
@@ -218,20 +223,23 @@
 								<img alt="" src="images/align-items.png" />
 							</div>
 						</dd>
-						<dt><label><i class="fa fa-plus-circle"></i>align-content</label>:</dt>
-						<dd><label class="radio-inline default">
-								<input checked name="container_align_content" type="radio"
-									value="stretch">stretch</label><label class="radio-inline">
-								<input name="container_align_content" type="radio"
-									value="flex-start">flex-start</label><label class="radio-inline">
-								<input name="container_align_content" type="radio"
-									value="flex-end">flex-end</label><label class="radio-inline">
-								<input name="container_align_content" type="radio" value="center">center</label><label
-								class="radio-inline">
-								<input name="container_align_content" type="radio"
-									value="space-between">space-between</label><label class="radio-inline">
-								<input name="container_align_content" type="radio"
-									value="space-around">space-around</label>
+						<dt class="col-sm-2"><label><i class="fa fa-plus-circle"></i>align-content</label>:</dt>
+						<dd class="col-sm-10"><label class="radio-inline default">
+								<input checked name="container_align_content" type="radio" value="stretch">
+								stretch</label>
+							<label class="radio-inline">
+								<input name="container_align_content" type="radio" value="flex-start">
+								flex-start</label>
+							<label class="radio-inline">
+								<input name="container_align_content" type="radio" value="flex-end"> flex-end</label>
+							<label class="radio-inline">
+								<input name="container_align_content" type="radio" value="center"> center</label>
+							<label class="radio-inline">
+								<input name="container_align_content" type="radio" value="space-between">
+								space-between</label>
+							<label class="radio-inline">
+								<input name="container_align_content" type="radio" value="space-around">
+								space-around</label>
 							<div class="desc">
 								<p>The <code>align-content</code> property aligns a flex
 									container's lines along the cross axis when there is extra
@@ -261,14 +269,14 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-				<h3>Flex Item Properties <small>Click an item in the flex container
+				<h3 class="my-2">Flex Item Properties <small>Click an item in the flex container
 						to modify it</small></h3>
 				<h6>The following properties affect flexbox items. <a href="#"><strong>Click
 							here</strong></a> to toggle all the property descriptions.</h6>
 				<div>
-					<dl id="flexbox_item_properties" class="dl-horizontal">
-						<dt><label><i class="fa fa-plus-circle"></i>flex-grow</label>:</dt>
-						<dd>
+					<dl id="flexbox_item_properties" class="row">
+						<dt class="col-sm-2"><label><i class="fa fa-plus-circle"></i>flex-grow</label>:</dt>
+						<dd class="col-sm-10">
 							<input class="form-control input-sm" min="0" name="flex_grow" type="number" />
 							<div class="desc">
 								<p>The <code>flex-grow</code> property specifies the "flex
@@ -279,8 +287,8 @@
 									<code>0</code>.</p>
 							</div>
 						</dd>
-						<dt><label><i class="fa fa-plus-circle"></i>flex-shrink</label>:</dt>
-						<dd>
+						<dt class="col-sm-2"><label><i class="fa fa-plus-circle"></i>flex-shrink</label>:</dt>
+						<dd class="col-sm-10">
 							<input class="form-control input-sm" min="0" name="flex_shrink" type="number" />
 							<div class="desc">
 								<p>The <code>flex-shrink</code> property specifies the "flex
@@ -295,8 +303,8 @@
 									noticeably reduced. The initial value is <code>1</code></p>
 							</div>
 						</dd>
-						<dt><label><i class="fa fa-plus-circle"></i>flex-basis</label>:</dt>
-						<dd>
+						<dt class="col-sm-2"><label><i class="fa fa-plus-circle"></i>flex-basis</label>:</dt>
+						<dd class="col-sm-10">
 							<input class="form-control input-sm" name="flex_basis" type="text" />
 							<div class="desc">
 								<p>The <code>flex-basis</code> property specifies the initial
@@ -308,9 +316,9 @@
 									is <code>auto</code></p>
 							</div>
 						</dd>
-						<dt class="padding_top_zero"><label>
+						<dt class="col-sm-2 padding_top_zero"><label>
 								<i class="fa fa-plus-circle"></i>flex</label>:</dt>
-						<dd><span id="flex">Shorthand for the above three properties</span>
+						<dd class="col-sm-10"><span id="flex">Shorthand for the above three properties</span>
 							<div class="desc">
 								<p>A shorthand property for the <code>flex-grow</code>,
 									<code>flex-shrink</code> and <code>flex-basis</code> properties.
@@ -320,9 +328,9 @@
 									is <code>0 1 auto</code></p>
 							</div>
 						</dd>
-						<dt class="padding_top_zero"><label>
+						<dt class="col-sm-2 padding_top_zero"><label>
 								<i class="fa fa-plus-circle"></i>align-self</label>:</dt>
-						<dd><label class="radio-inline default">
+						<dd class="col-sm-10"><label class="radio-inline default">
 								<input checked name="align_self" type="radio" value="auto">auto</label>
 							<label class="radio-inline">
 								<input name="align_self" type="radio" value="flex-start">flex-start</label>
@@ -362,8 +370,8 @@
 								</ul>
 							</div>
 						</dd>
-						<dt><label><i class="fa fa-plus-circle"></i>order</label>:</dt>
-						<dd>
+						<dt class="col-sm-2"><label><i class="fa fa-plus-circle"></i>order</label>:</dt>
+						<dd class="col-sm-10">
 							<input class="form-control input-sm" name="order" type="number" />
 							<div class="desc">
 								<p>Controls the order in which children of a flex container
@@ -377,11 +385,11 @@
 									negative values are permitted.</p>
 							</div>
 						</dd>
-						<dt><label>width</label>:</dt>
-						<dd>
+						<dt class="col-sm-2"><label>width</label>:</dt>
+						<dd class="col-sm-10">
 							<input class="form-control input-sm" name="flex_item_width" type="text" /></dd>
-						<dt><label>height</label>:</dt>
-						<dd>
+						<dt class="col-sm-2"><label>height</label>:</dt>
+						<dd class="col-sm-10">
 							<input class="form-control input-sm" name="flex_item_height" type="text" /></dd>
 					</dl>
 				</div>
@@ -502,11 +510,10 @@
 			</div>
 		</div>
 	</div>
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="js/bootstrap.min.js"></script>
+	<!-- jQuery  -->
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 	<script src="js/scripts.js"></script>
 </body>
+
 </html>
