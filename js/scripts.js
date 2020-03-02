@@ -1,17 +1,5 @@
 $(function () {
     var maxContainerWidth, selectedItem;
-    // $("#resizable").resizable({
-    //     minHeight: 50,
-    //     create: function () {
-    //         maxContainerWidth = $(this).width();
-    //     },
-    //     start: function () {
-    //         $("#resizable").resizable('option', 'maxWidth', maxContainerWidth);
-    //     },
-    //     resize: function () {
-    //         $('#main_row_2').css('top', $('#main_row_1').height());
-    //     }
-    // });
     $('#resize_toggle').change(function () {
         if ($(this).is(':checked')) {
             $("#resizable").css("resize", "both");
