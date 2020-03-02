@@ -22,9 +22,19 @@ $(function () {
         var container_justify_content = getComputedStyle( document.getElementById('flexbox_container') ).getPropertyValue('justify-content'); 
         var container_align_items = getComputedStyle( document.getElementById('flexbox_container') ).getPropertyValue('align-items'); 
         var container_align_content = getComputedStyle( document.getElementById('flexbox_container') ).getPropertyValue('align-content'); 
-console.log(container_display, container_flex_dir, container_flex_wrap, container_justify_content, container_align_items, container_align_content);
-        code = htmlEntities(`<div style="display: ${container_display}; ">code</div>`);
-        $('#code').html(`<pre><code>${code}</code></pre>`).slideToggle('fast');
+
+        code = htmlEntities(`<div style="display: ${container_display}; flex-direction: ${container_flex_dir}; flex-wrap: ${container_flex_wrap}; justify-content: ${container_justify_content}; align-items: ${container_align_items}; align-content: ${container_align_content};">`);
+        $('.flex_item').each(function(i){
+            var child_display = $(this).css('display'); 
+            var child_flex_grow =  $(this).css('flex-grow'); 
+            var child_flex_shrink =  $(this).css('flex-shrink'); 
+            // var chil_justify_content = getComputedStyle(  ).getPropertyValue('justify-content'); 
+            // var chil_align_items = getComputedStyle(  ).getPropertyValue('align-items'); 
+            // var chil_align_content = getComputedStyle( ).getPropertyValue('align-content'); 
+            code += htmlEntities(`\n\t<div style="display: ${child_display}; flex-grow: ${child_flex_grow}; flex-shrink: ${child_flex_shrink};">Item ${i+1}</div>`);
+        })
+        code += htmlEntities("\n</div>");
+        $('#code code').html(`${code}`).closest('#code').slideToggle('fast');
     })
     $('#flexbox_container').on('click', '.flex_item > button', function (e) {
         e.stopPropagation();
