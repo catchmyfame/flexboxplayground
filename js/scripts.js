@@ -19,8 +19,10 @@ $(function () {
             $("#resizable").css("resize", "none");
         }
     })
+    var item = 1;
     $('#add_item').click(function () {
-        var content = '<div class="flex_item"><button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>Item</div>';
+        item++;
+        var content = `<div class="flex_item"><button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>Item ${item}</div>`;
         $(content).hide().appendTo('#flexbox_container').fadeIn('fast');
     })
     $('#reset').click(function () { if (confirm("Are you sure you want to reset the playground?")) location.reload(); });
@@ -35,6 +37,10 @@ $(function () {
     $('#flexbox_container').on('click', '.flex_item > button', function (e) {
         e.stopPropagation();
         $(this).parent('.flex_item').remove();
+        $('div.flex_item').html(function(i,o){
+            return(o.replace(/Item \d*/g, `Item ${i+1}`))
+        });
+        item--;
     })
     $('input[name="container_display"]').change(function () {
         $("#flexbox_container").css('display', $(this).val());

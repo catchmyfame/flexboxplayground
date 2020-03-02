@@ -32,7 +32,7 @@
 			</div>
 			<div class="col-md-6 text-right pt-3">
 				<button id="add_item" class="btn btn-primary btn-sm" type="button">
-					<span id="add_item_button" aria-hidden="true" class="glyphicon glyphicon-plus"></span>Add Flex Item
+					<i class="fa fa-plus" aria-hidden="true"></i>	Add Flex Item
 				</button>
 				<button id="reset" class="btn btn-default btn-sm" type="button">Reset</button>
 				<label class="checkbox-inline">
@@ -43,21 +43,19 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-				<div id="resizable">
-					<span id="flexbox_container_direction_icon" class="fa-stack fa-lg" title="Main axis">
-						<i class="fa fa-circle-thin fa-stack-2x"></i>
-						<i id="flex_direction_arrow" class="fa fa-arrow-right fa-stack-1x"></i>
-					</span>
-					<span id="flexbox_container_cross_direction_icon" class="fa-stack" title="Cross axis">
-						<i class="fa fa-circle-thin fa-stack-2x"></i>
-						<i id="cross_axis_arrow" class="fa fa-arrow-right fa-stack-1x"></i>
-					</span>
-					<div id="flexbox_container">
-						<div class="flex_item">
-							<button aria-label="Close" class="close" type="button">
-								<span aria-hidden="true">&times;</span>
-							</button>Item</div>
-					</div>
+				<span id="flexbox_container_direction_icon" class="fa-stack fa-lg" title="Main axis">
+					<i class="fa fa-circle-thin fa-stack-2x"></i>
+					<i id="flex_direction_arrow" class="fa fa-arrow-right fa-stack-1x"></i>
+				</span>
+				<span id="flexbox_container_cross_direction_icon" class="fa-stack" title="Cross axis">
+					<i class="fa fa-circle-thin fa-stack-2x"></i>
+					<i id="cross_axis_arrow" class="fa fa-arrow-right fa-stack-1x"></i>
+				</span>
+				<div id="flexbox_container">
+					<div class="flex_item">
+						<button aria-label="Close" class="close" type="button">
+							<span aria-hidden="true">&times;</span>
+						</button>Item 1</div>
 				</div>
 			</div>
 		</div>
@@ -67,8 +65,8 @@
 			<div class="col-md-12">
 				<h3 id="container_heading" class="my-3">Flex Container Properties <small>Default
 						values in <span class="default">blue</span></small></h3>
-				<h6>The following properties affect the flexbox container.
-					<a href="#"><strong>Click here</strong></a> to toggle all the property descriptions.</h6>
+				<p>The following properties affect the flexbox container.
+					<a href="#"><strong>Click here</strong></a> to toggle all the property descriptions.</p>
 				<div>
 					<dl id="flexbox_container_properties" class="row">
 						<dt class="col-sm-2"><label><i class="fa fa-plus-circle"></i>display</label>:</dt>
@@ -276,8 +274,8 @@
 			<div class="col-md-12">
 				<h3 class="my-2">Flex Item Properties <small>Click an item in the flex container
 						to modify it</small></h3>
-				<h6>The following properties affect flexbox items. <a href="#"><strong>Click
-							here</strong></a> to toggle all the property descriptions.</h6>
+				<p>The following properties affect flexbox items. <a href="#"><strong>Click
+							here</strong></a> to toggle all the property descriptions.</p>
 				<div>
 					<dl id="flexbox_item_properties" class="row">
 						<dt class="col-sm-2"><label><i class="fa fa-plus-circle"></i>flex-grow</label>:</dt>
@@ -321,7 +319,7 @@
 									is <code>auto</code></p>
 							</div>
 						</dd>
-						<dt class="col-sm-2 padding_top_zero"><label>
+						<dt class="col-sm-2"><label>
 								<i class="fa fa-plus-circle"></i>flex</label>:</dt>
 						<dd class="col-sm-10"><span id="flex">Shorthand for the above three properties</span>
 							<div class="desc">
@@ -333,7 +331,7 @@
 									is <code>0 1 auto</code></p>
 							</div>
 						</dd>
-						<dt class="col-sm-2 padding_top_zero"><label>
+						<dt class="col-sm-2"><label>
 								<i class="fa fa-plus-circle"></i>align-self</label>:</dt>
 						<dd class="col-sm-10"><label class="radio-inline default">
 								<input checked name="align_self" type="radio" value="auto">auto</label>
@@ -425,8 +423,8 @@
 				<p>This site is a resource where you can learn about flexbox and test
 					out various basic flexbox layouts. The playground area allows you to
 					manipulate the flex container and flex items quickly and easily without
-					having to write any code. It's a work-in-progess that will be updated with examples, frequently
-					asked questions, and new information as standards evolve.</p>
+					having to write any code. It's a work-in-progess that will be updated with examples and new
+					information as standards evolve.</p>
 				<h2>Glossary <small>Frequently used flexbox-related terminology</small></h2>
 				<img alt="flex box terminology example" class="img-responsive center-block" src="images/flexbox.png" />
 				<dl class="dl-horizontal">
