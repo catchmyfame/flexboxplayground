@@ -1,17 +1,5 @@
 $(function () {
     var maxContainerWidth, selectedItem;
-    // $("#resizable").resizable({
-    //     minHeight: 50,
-    //     create: function () {
-    //         maxContainerWidth = $(this).width();
-    //     },
-    //     start: function () {
-    //         $("#resizable").resizable('option', 'maxWidth', maxContainerWidth);
-    //     },
-    //     resize: function () {
-    //         $('#main_row_2').css('top', $('#main_row_1').height());
-    //     }
-    // });
     $('#resize_toggle').change(function () {
         if ($(this).is(':checked')) {
             $("#resizable").css("resize", "both");
@@ -28,11 +16,25 @@ $(function () {
     $('#reset').click(function () { if (confirm("Are you sure you want to reset the playground?")) location.reload(); });
     $('#view').click(function(){
         // slidetoggle a div from the top with code
-        console.log($('#flexbox_container')[0].outerHTML);
-        var code = $('#flexbox_container')[0].outerHTML;
+        var container_display = $('#flexbox_container').css('display'); 
+        var container_flex_dir = $('#flexbox_container').css('flex-direction'); 
+        var container_flex_wrap = $('#flexbox_container').css('flex-wrap'); 
+        var container_justify_content = $('#flexbox_container').css('justify-content'); 
+        var container_align_items = $('#flexbox_container').css('align-items'); 
+        var container_align_content = $('#flexbox_container').css('align-content'); 
 
-        code = code.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-        $('#code').html('<pre><code>'+code+'</code></pre>').slideToggle('fast');
+        code = htmlEntities(`<div style="display: ${container_display}; flex-direction: ${container_flex_dir}; flex-wrap: ${container_flex_wrap}; justify-content: ${container_justify_content}; align-items: ${container_align_items}; align-content: ${container_align_content};">`);
+        $('.flex_item').each(function(i){
+            var child_display = $(this).css('display'); 
+            var child_flex_grow =  $(this).css('flex-grow'); 
+            var child_flex_shrink =  $(this).css('flex-shrink'); 
+            var child_flex_basis = $(this).css('flex-basis'); 
+            var child_align_self = $(this).css('align-self'); 
+            var child_order = $(this).css('order'); 
+            code += htmlEntities(`\n  <div style="display: ${child_display}; flex-grow: ${child_flex_grow}; flex-shrink: ${child_flex_shrink}; flex-basis: ${child_flex_basis}; align-self: ${child_align_self};order: ${child_order};">Item ${i+1}</div>`);
+        })
+        code += htmlEntities("\n</div>");
+        $('#code code').html(`${code}`).closest('#code').slideToggle('fast');
     })
     $('#flexbox_container').on('click', '.flex_item > button', function (e) {
         e.stopPropagation();
@@ -137,4 +139,7 @@ $(function () {
             attribs.find('svg').removeClass('fa-plus-circle').addClass('fa-minus-circle');
         }
     })
+    function htmlEntities(str) {
+        return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
 });
