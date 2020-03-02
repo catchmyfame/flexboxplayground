@@ -123,19 +123,18 @@ $(function () {
         selectedItem.css('height', $(this).val());
     })
     $('#flexbox_container_properties, #flexbox_item_properties').on('click', 'dt label', function () {
-        $(this).find('i').toggleClass('fa-plus-circle fa-minus-circle').closest('dt').next().find('.desc').slideToggle();
+        $(this).find('svg').toggleClass('fa-plus-circle fa-minus-circle').closest('dt').next().find('.desc').slideToggle();
     })
     $('#main_row_2').css('top', $('#main_row_1').height());
-    $('h6 a').click(function (e) {
+    $('p a').click(function (e) {
         e.preventDefault();
         var attribs = $(this).parent().next();
         if (attribs.find('.desc:visible').length == attribs.find('.desc').length) {
             attribs.find('.desc').slideUp();
-            attribs.find('i').removeClass('fa-minus-circle').addClass('fa-plus-circle');
+            attribs.find('svg').removeClass('fa-minus-circle').addClass('fa-plus-circle');
         } else {
             attribs.find('.desc').slideDown();
-            attribs.find('i').removeClass('fa-plus-circle').addClass('fa-minus-circle');
+            attribs.find('svg').removeClass('fa-plus-circle').addClass('fa-minus-circle');
         }
-
     })
 });

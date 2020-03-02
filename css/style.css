@@ -69,8 +69,8 @@
     background-position: -81px -224px;
 }
 
-dt i.fa.fa-plus-circle,
-dt i.fa.fa-minus-circle {
+dt .fa-plus-circle,
+dt .fa-minus-circle {
     color: #337ab7;
     opacity: .7;
     padding: 1px;
