@@ -16,11 +16,15 @@ $(function () {
     $('#reset').click(function () { if (confirm("Are you sure you want to reset the playground?")) location.reload(); });
     $('#view').click(function(){
         // slidetoggle a div from the top with code
-        console.log($('#flexbox_container')[0].outerHTML);
-        var code = $('#flexbox_container')[0].outerHTML;
-
-        code = code.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-        $('#code').html('<pre><code>'+code+'</code></pre>').slideToggle('fast');
+        var container_display = getComputedStyle( document.getElementById('flexbox_container') ).getPropertyValue('display'); 
+        var container_flex_dir = getComputedStyle( document.getElementById('flexbox_container') ).getPropertyValue('flex-direction'); 
+        var container_flex_wrap = getComputedStyle( document.getElementById('flexbox_container') ).getPropertyValue('flex-wrap'); 
+        var container_justify_content = getComputedStyle( document.getElementById('flexbox_container') ).getPropertyValue('justify-content'); 
+        var container_align_items = getComputedStyle( document.getElementById('flexbox_container') ).getPropertyValue('align-items'); 
+        var container_align_content = getComputedStyle( document.getElementById('flexbox_container') ).getPropertyValue('align-content'); 
+console.log(container_display, container_flex_dir, container_flex_wrap, container_justify_content, container_align_items, container_align_content);
+        code = htmlEntities(`<div style="display: ${container_display}; ">code</div>`);
+        $('#code').html(`<pre><code>${code}</code></pre>`).slideToggle('fast');
     })
     $('#flexbox_container').on('click', '.flex_item > button', function (e) {
         e.stopPropagation();
@@ -125,4 +129,7 @@ $(function () {
             attribs.find('svg').removeClass('fa-plus-circle').addClass('fa-minus-circle');
         }
     })
+    function htmlEntities(str) {
+        return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
 });
