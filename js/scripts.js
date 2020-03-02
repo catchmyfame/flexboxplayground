@@ -16,22 +16,22 @@ $(function () {
     $('#reset').click(function () { if (confirm("Are you sure you want to reset the playground?")) location.reload(); });
     $('#view').click(function(){
         // slidetoggle a div from the top with code
-        var container_display = getComputedStyle( document.getElementById('flexbox_container') ).getPropertyValue('display'); 
-        var container_flex_dir = getComputedStyle( document.getElementById('flexbox_container') ).getPropertyValue('flex-direction'); 
-        var container_flex_wrap = getComputedStyle( document.getElementById('flexbox_container') ).getPropertyValue('flex-wrap'); 
-        var container_justify_content = getComputedStyle( document.getElementById('flexbox_container') ).getPropertyValue('justify-content'); 
-        var container_align_items = getComputedStyle( document.getElementById('flexbox_container') ).getPropertyValue('align-items'); 
-        var container_align_content = getComputedStyle( document.getElementById('flexbox_container') ).getPropertyValue('align-content'); 
+        var container_display = $('#flexbox_container').css('display'); 
+        var container_flex_dir = $('#flexbox_container').css('flex-direction'); 
+        var container_flex_wrap = $('#flexbox_container').css('flex-wrap'); 
+        var container_justify_content = $('#flexbox_container').css('justify-content'); 
+        var container_align_items = $('#flexbox_container').css('align-items'); 
+        var container_align_content = $('#flexbox_container').css('align-content'); 
 
         code = htmlEntities(`<div style="display: ${container_display}; flex-direction: ${container_flex_dir}; flex-wrap: ${container_flex_wrap}; justify-content: ${container_justify_content}; align-items: ${container_align_items}; align-content: ${container_align_content};">`);
         $('.flex_item').each(function(i){
             var child_display = $(this).css('display'); 
             var child_flex_grow =  $(this).css('flex-grow'); 
             var child_flex_shrink =  $(this).css('flex-shrink'); 
-            // var chil_justify_content = getComputedStyle(  ).getPropertyValue('justify-content'); 
-            // var chil_align_items = getComputedStyle(  ).getPropertyValue('align-items'); 
-            // var chil_align_content = getComputedStyle( ).getPropertyValue('align-content'); 
-            code += htmlEntities(`\n\t<div style="display: ${child_display}; flex-grow: ${child_flex_grow}; flex-shrink: ${child_flex_shrink};">Item ${i+1}</div>`);
+            var child_flex_basis = $(this).css('flex-basis'); 
+            var child_align_self = $(this).css('align-self'); 
+            var child_order = $(this).css('order'); 
+            code += htmlEntities(`\n  <div style="display: ${child_display}; flex-grow: ${child_flex_grow}; flex-shrink: ${child_flex_shrink}; flex-basis: ${child_flex_basis}; align-self: ${child_align_self};order: ${child_order};">Item ${i+1}</div>`);
         })
         code += htmlEntities("\n</div>");
         $('#code code').html(`${code}`).closest('#code').slideToggle('fast');
