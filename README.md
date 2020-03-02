@@ -5,4 +5,3 @@ https://catchmyfame.github.io/flexboxplayground/
 
 ## TO DO:
 * Create view HTML/CSS option
-* Add `place-content`, `place-items`, and `place-self` properties
