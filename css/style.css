@@ -21,7 +21,6 @@
 
 #flexbox_container {
     border: 8px solid #ccc;
-    padding: 10px;
     height: 100%;
     display: flex;
     resize: both;
@@ -82,6 +81,7 @@ dt .fa-minus-circle {
     left: -1px;
     color: #888;
     transition: all .5s ease;
+    z-index: 1;
 }
 
 #flexbox_container_cross_direction_icon {
@@ -92,6 +92,7 @@ dt .fa-minus-circle {
     transform: rotate(90deg);
     transition: all .5s ease;
     opacity: 0;
+    z-index: 1;
 }
 
 .fa-circle {
