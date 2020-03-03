@@ -24,7 +24,9 @@
 
 <body>
 	<div id="main_row_1" class="container">
-		<div id="code"><pre><code></code></pre></div>
+		<div id="code">
+			<pre><code></code></pre>
+		</div>
 
 		<div class="row">
 			<div class="col-md-6">
@@ -32,9 +34,10 @@
 			</div>
 			<div class="col-md-6 text-right pt-3">
 				<button id="add_item" class="btn btn-primary btn-sm" type="button">
-					<i class="fa fa-plus" aria-hidden="true"></i>	Add Flex Item
+					<i class="fa fa-plus" aria-hidden="true"></i> Add Flex Item
 				</button>
-				<button id="reset" class="btn btn-default btn-sm" type="button"><i class="fas fa-sync"></i> Reset</button>
+				<button id="reset" class="btn btn-default btn-sm" type="button"><i class="fas fa-sync"></i>
+					Reset</button>
 				<label class="checkbox-inline">
 					<input id="resize_toggle" checked type="checkbox" /> enable resize
 				</label>
@@ -52,10 +55,7 @@
 					<i id="cross_axis_arrow" class="fa fa-arrow-right fa-stack-1x"></i>
 				</span>
 				<div id="flexbox_container">
-					<div class="flex_item">
-						<button aria-label="Close" class="close" type="button">
-							<span aria-hidden="true">&times;</span>
-						</button>Item 1</div>
+					<div class="flex_item"><i class="fas fa-times close"></i></div>
 				</div>
 			</div>
 		</div>
@@ -395,11 +395,17 @@
 						<dd class="col-sm-10">
 							<input class="form-control input-sm" name="flex_item_height" type="text" /></dd>
 					</dl>
+					<form class="form-inline">Modify the margin and width of all current flex items (children of the flex container):
+						<label class="mx-2" for="flex-item-margin">Margin</label>
+						<input type="text" class="form-control form-control-sm" id="flex-item-margin" placeholder="margin">
+						<label class="mx-2" for="flex-item-width">Width</label>
+						<input type="text" class="form-control form-control-sm" id="flex-item-width" placeholder="width">
+					</form>
 				</div>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-12">
+			<div class="col-md-12 mt-3">
 				<h2>What is Flexbox?</h2>
 				<p>Flexbox is a way to layout elements to accommodate different screen
 					sizes. Flexbox does not rely on floats and margins, and the flex container's
@@ -506,7 +512,8 @@
 		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
 	<!-- Fontawesome -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js" integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+		integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0=" crossorigin="anonymous"></script>
 
 	<script src="js/scripts.js"></script>
 </body>

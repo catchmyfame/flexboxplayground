@@ -47,16 +47,14 @@
     padding: 10px;
     position: relative;
     cursor: pointer;
-    transition: all .5s ease;
+    transition: flex-grow, flex-shrink .5s ease;
+    resize: both;
+    overflow: auto;
 }
 
-.flex_item>button {
-    font-size: 2em;
-    position: absolute;
-    z-index: 1;
-    top: -18px;
-    right: -11px;
-    opacity: .8;
+.flex_item:hover>svg {
+    transform: rotate(90deg);
+    transition: transform .3s ease-in-out;
 }
 
 .ui-icon-gripsmall-diagonal-se {
